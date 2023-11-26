@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Pedidos</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #000000;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+  <link href="css/mainheader.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h1 style="margin-left: 2cm;">BREAD APP HISTORIAL -> PEDIDOS</h1>
+
+  <header>
+    Historial de Pedidos
+  </header>
+
+  <nav>
+    <a href="clientes.html">Clientes</a>
+    <a href="listado_pedido.html">Pedidos</a>
+    <a href="historial_pedido.html">Historial de Pedidos</a>
+    <a href="productos.html">Productos</a>
+    <a href="inventario.html">Inventario</a>
+  </nav>
+
+  <h1 style="text-align: center;">Historial</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Pedido</th>
+      <th>Fecha</th>
+      <th>Dirección</th>
+      <th>Costo Total</th>
+    </tr>
+  </thead>
+  <tbody id="tasks-container">
+    <!-- Aquí se insertarán las filas -->
+  </tbody>
+</table>
+
+<script type="module">
+  import {
+    deleteped,
+    paraRecibirPedidosanteriores,
+    saveTask,
+  } from "./firebase.js";
+
+  const tasksContainer = document.getElementById("tasks-container");
+
+  window.addEventListener("DOMContentLoaded", async (e) => {
+    paraRecibirPedidosanteriores((querySnapshot) => {
+      tasksContainer.innerHTML = "";
+
+      querySnapshot.forEach((doc) => {
+        const task = doc.data();
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${task.id_cli}</td>
+          <td>${task.detalle}</td>
+          <td>${task.fecha}</td>
+          <td><a href="${task.direccion}" target="_blank">Ver ubicación</a></td>
+          <td>RD$ ${task.total}</td>`;
+
+
+        tasksContainer.appendChild(row);
+      });
+    });
+  });
+
+  
+</script>
+
+</body>
+</html>

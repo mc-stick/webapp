@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración de Clientes</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #000000;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dad8d8;
+    }
+
+    .card {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .delete-btn {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+
+    .editar-btn {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 3px;
+      font-weight: bold;
+    }
+  </style>
+  <title>Sistema de Administración de Pedidos</title>
+  <link href="css/mainheader.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h1 style="margin-left: 2cm;">BREAD APP</h1>
+
+  <header>
+    Administración de Clientes
+  </header>
+
+  <nav>
+    <a href="clientes.html">Clientes</a>
+    <a href="listado_pedido.html">Pedidos</a>
+    <a href="historial_pedido.html">Historial de Pedidos</a>
+    <a href="productos.html">Productos</a>
+    <a href="inventario.html">Inventario</a>
+  </nav>
+
+  <h1 style="text-align: center;">Listado de Clientes</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Email</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="clientes-list"></tbody>
+  </table>
+
+  <script type="module" src="./clientes.js"></script>
+</body>
+</html>
